@@ -5,7 +5,7 @@ import lombok.Getter;
 import pl.sda.elections.counter.VoteCounter;
 import pl.sda.elections.model.ElectionResult;
 import pl.sda.elections.model.VotingList;
-import pl.sda.elections.repositorys.VotingListRepository;
+import pl.sda.elections.repositories.VotingListRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;

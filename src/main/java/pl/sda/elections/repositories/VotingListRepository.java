@@ -1,4 +1,4 @@
-package pl.sda.elections.repositorys;
+package pl.sda.elections.repositories;
 
 import pl.sda.elections.model.Candidate;
 import pl.sda.elections.model.VotingList;

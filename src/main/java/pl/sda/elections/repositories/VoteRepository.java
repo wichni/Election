@@ -1,4 +1,4 @@
-package pl.sda.elections.repositorys;
+package pl.sda.elections.repositories;
 
 import pl.sda.elections.model.Vote;
 import pl.sda.files.csvJsonConverter.FileReaderFactory;

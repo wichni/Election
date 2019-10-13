@@ -2,7 +2,7 @@ package pl.sda.elections;
 
 import pl.sda.elections.model.ElectionResult;
 import pl.sda.elections.model.Vote;
-import pl.sda.elections.repositorys.VoteRepository;
+import pl.sda.elections.repositories.VoteRepository;
 
 public class ElectionFacade {
 

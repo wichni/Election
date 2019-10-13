@@ -3,8 +3,8 @@ package pl.sda.elections.counter;
 import lombok.AllArgsConstructor;
 import pl.sda.elections.model.Candidate;
 import pl.sda.elections.model.Vote;
-import pl.sda.elections.repositorys.VoteRepository;
-import pl.sda.elections.repositorys.VotingListRepository;
+import pl.sda.elections.repositories.VoteRepository;
+import pl.sda.elections.repositories.VotingListRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

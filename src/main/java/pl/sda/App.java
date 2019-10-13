@@ -5,10 +5,10 @@ import pl.sda.elections.counter.VoteCounter;
 import pl.sda.elections.model.ElectionResult;
 import pl.sda.elections.model.Vote;
 import pl.sda.elections.presenters.ElectionsResultPresenter;
-import pl.sda.elections.repositorys.CandidateListRepository;
-import pl.sda.elections.repositorys.CandidateRepository;
-import pl.sda.elections.repositorys.VoteRepository;
-import pl.sda.elections.repositorys.VotingListRepository;
+import pl.sda.elections.repositories.CandidateListRepository;
+import pl.sda.elections.repositories.CandidateRepository;
+import pl.sda.elections.repositories.VoteRepository;
+import pl.sda.elections.repositories.VotingListRepository;
 
 public class App {
     public static void main(String[] args) {
