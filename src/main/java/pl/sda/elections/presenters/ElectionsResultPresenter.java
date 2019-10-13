@@ -16,44 +16,27 @@ import java.util.Map;
 public class ElectionsResultPresenter {
     private VoteCounter voteCounter;
     private VotingListRepository votingListRepository;
+    private MandateDistribution distributionAlgorithm;
+
+    public ElectionsResultPresenter(VoteCounter voteCounter, VotingListRepository votingListRepository) {
+        this.voteCounter = voteCounter;
+        this.votingListRepository = votingListRepository;
+        this.distributionAlgorithm = new DHondtMethodAlgorithm();
+    }
 
     public ElectionResult getResult(Long electionsId, Long mandates) {
         List<VotingList> votingLists = votingListRepository.getVotingListsByElectionsId(electionsId);
 
-        Map<Long, Long> listResult = new HashMap<>();
-        votingLists.stream()
-                .forEach(x -> listResult.put(x.getId(), voteCounter.count(electionsId, x.getId())));
+        Map<Long, Long> listResult = countVoteForList(electionsId, votingLists);
 
-        List<Quotient> quotients = new ArrayList<>();
-        for (Long listId : listResult.keySet()) {
-            quotients.addAll(getQuotientsForList(listResult.get(listId), mandates, listId));
-        }
-        quotients.sort((Quotient x, Quotient y) -> (int) (y.getValue() - x.getValue()));
-
-        Map<Long, Long> comiteeMandates = new HashMap<>();
-        quotients.subList(0, Math.toIntExact(mandates)).stream()
-                .forEach(x -> {
-                    if (comiteeMandates.get(x.getListId()) == null) {
-                        comiteeMandates.put(x.getListId(), 0L);
-                    }
-                    comiteeMandates.put(x.getListId(), comiteeMandates.get(x.getListId()) + 1);
-                });
+        Map<Long, Long> comiteeMandates = distributionAlgorithm.getMandates(mandates, listResult);
         return new ElectionResult(0L, electionsId, comiteeMandates);
     }
 
-    private List<Quotient> getQuotientsForList(Long voteCount, Long mandates, Long listId) {
-        List<Quotient> result = new ArrayList<>();
-        for (int i = 1; i <= mandates; i++) {
-            result.add(new Quotient(i, voteCount / i, listId));
-        }
-        return result;
-    }
-
-    @AllArgsConstructor
-    @Getter
-    private class Quotient {
-        private int n;
-        private Long value;
-        private Long listId;
+    private Map<Long, Long> countVoteForList(Long electionsId, List<VotingList> votingLists) {
+        Map<Long, Long> listResult = new HashMap<>();
+        votingLists.stream()
+                .forEach(x -> listResult.put(x.getId(), voteCounter.count(electionsId, x.getId())));
+        return listResult;
     }
 }
