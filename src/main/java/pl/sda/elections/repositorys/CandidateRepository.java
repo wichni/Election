@@ -10,12 +10,17 @@ public class CandidateRepository {
 
     public CandidateRepository() {
         candidateList.add(new Candidate(0L, "Primus", "Javowy"));
-        candidateList.add(new Candidate(1L, "Secundus", "Aplowy"));
-        candidateList.add(new Candidate(2L, "Tercjusz", "Pythonowy"));
-        candidateList.add(new Candidate(3L, "Fordus", "Pehapowy"));
-        candidateList.add(new Candidate(4L, "Tercjusz", "Ceplusowy"));
-        candidateList.add(new Candidate(5L, "Primus", "Pehapowy"));
-        candidateList.add(new Candidate(6L, "Secundus", "Javowy"));
-        candidateList.add(new Candidate(7L, "Fordus", "Aplowy"));
+        candidateList.add(new Candidate(1L, "Secundus", "Javowy"));
+        candidateList.add(new Candidate(3L, "Primus", "PHPowy"));
+        candidateList.add(new Candidate(4L, "Tercjusz", "APLowy"));
+        candidateList.add(new Candidate(5L, "Tercjusz", "PHPowy"));
+        candidateList.add(new Candidate(6L, "Secundus", "Pythonowy"));
+        candidateList.add(new Candidate(7L, "Primus", "Pythonowy"));
+    }
+
+    public Candidate findById(Long id) {
+        return candidateList.stream()
+                .filter(x -> id.equals(x.getId()))
+                .findFirst().get();
     }
 }

@@ -28,6 +28,6 @@ public class MapToVoteAdapter extends Vote {
 
     @Override
     public Long getElectionsId() {
-        return Long.parseLong(votesRaw.get("electionId").toString());
+        return Long.parseLong(votesRaw.get("electionsId").toString());
     }
 }

@@ -17,5 +17,4 @@ public class ElectionResult {
         this.electionsId = electionsId;
         this.committeeMandates = committeeMandates;
     }
-
 }
