@@ -24,12 +24,8 @@ public class VoteCounter {
         List<Long> collect = candidateByListIdAndElectionsId.stream()
                 .map(x -> x.getId())
                 .collect(Collectors.toList());
-        return Long.valueOf(votes.stream()
+        return (long) votes.stream()
                 .filter(x -> collect.contains(x.getCandidateId()))
-                .collect(Collectors.toList()).size());
-    }
-
-    private Long countCandidateVotes(Long electionsId, Long candidateId) {
-        return 0L;
+                .collect(Collectors.toList()).size();
     }
 }
